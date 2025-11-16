@@ -26,6 +26,6 @@ if ($result->num_rows === 0) {
 $row = $result->fetch_assoc();
 $_SESSION['reset_email'] = $row['email'];
 
-header("Location: reset_password.php");
+header("Location: resetpassword.php");
 exit;
 ?>

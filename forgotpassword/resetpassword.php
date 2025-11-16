@@ -22,7 +22,7 @@
 <div class="container">
     <h2>SET NEW<br>PASSWORD</h2>
 
-    <form action="save_new_password.php" method="POST">
+    <form action="newpassword.php" method="POST">
         <input type="password" name="password" placeholder="New Password" required>
         <input type="password" name="confirm" placeholder="Confirm Password" required>
         <button type="submit">Save Password</button>
