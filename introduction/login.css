@@ -96,6 +96,19 @@ input::placeholder {
     color: black;
     font-weight: bold;
 }
+.forgot-link {
+  display: block;
+  margin: 5px 0 15px;
+  text-align: right;
+  font-size: 14px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.forgot-link:hover {
+  color: #dcdcdc;
+  text-decoration: none;
+}
 
 button {
     background: #00f9ff;

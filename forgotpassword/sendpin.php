@@ -12,25 +12,31 @@ if ($conn->connect_error) die("DB error: " . $conn->connect_error);
 $email = trim($_POST['email']);
 
 $stmt = $conn->prepare("SELECT userid FROM users WHERE email = ?");
-if (!$stmt) die("Prepare failed: " . $conn->error);
 $stmt->bind_param("s", $email);
 $stmt->execute();
 $result = $stmt->get_result();
 if ($result->num_rows === 0) die("Email not found");
 $stmt->close();
 
+// Create PIN
 $pin = str_pad(rand(0, 999999), 6, '0', STR_PAD_LEFT);
 
+// Remove previous PINs
 $del = $conn->prepare("DELETE FROM password_resets WHERE email = ?");
 $del->bind_param("s", $email);
 $del->execute();
 $del->close();
 
-$ins = $conn->prepare("INSERT INTO password_resets (email, pin, expires_at) VALUES (?, ?, DATE_ADD(NOW(), INTERVAL 1 HOUR))");
+// Insert new PIN
+$ins = $conn->prepare("
+    INSERT INTO password_resets (email, pin, expires_at) 
+    VALUES (?, ?, DATE_ADD(NOW(), INTERVAL 1 HOUR))
+");
 $ins->bind_param("ss", $email, $pin);
-if (!$ins->execute()) die("Insert failed: " . $ins->error);
+$ins->execute();
 $ins->close();
 
+// Send PIN
 $mail = new PHPMailer(true);
 try {
     $mail->isSMTP();
@@ -54,7 +60,7 @@ try {
 
     $mail->send();
 
-    header("Location: reset_password_pin.php?email=" . urlencode($email));
+    header("Location: resetpin.php");
     exit;
 
 } catch (Exception $e) {

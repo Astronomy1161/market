@@ -28,8 +28,16 @@
 
       <input type="email" name="email" placeholder="EMAIL" required />
       <input type="tel" name="contact" placeholder="CONTACT NO." required />
-      <input type="password" name="password" placeholder="PASSWORD" required />
+      <input type="password" name="password" placeholder="PASSWORD" 
+       required 
+       pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$"
+       title="Password must be at least 8 characters long and include a capital letter, lowercase letter, and a number." />
+
       <input type="password" name="confirm_password" placeholder="CONFIRM PASSWORD" required />
+      <small style="   color: #ffffff; margin-bottom: 1px; font-size: 0.60em;">
+      password must be at least 8 characters and uppercase letter, lowercase letter, and number.
+      </small>
+
 
       <button type="submit">REGISTER</button>
     </form>
