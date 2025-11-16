@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Aquatrade Register</title>
+<link rel="stylesheet" href="register.css">
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      <img src="logo.jpg" alt="Aquatrade Logo" />
+      <div class="logo-text">AQUATRADE</div>
+    </div>
+    <ul>
+      <li><a href="about.html">ABOUT</a></li>
+      <li><a href="contact.html">CONTACT</a></li>
+      <li><a href="index.html">HOME</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <form action="register.php" method="POST">
+      <div class="name-row">
+        <input type="text" name="firstname" placeholder="FIRSTNAME" required />
+        <input type="text" name="lastname" placeholder="LASTNAME" required />
+      </div>
+
+      <input type="email" name="email" placeholder="EMAIL" required />
+      <input type="tel" name="contact" placeholder="CONTACT NO." required />
+      <input type="password" name="password" placeholder="PASSWORD" required />
+      <input type="password" name="confirm_password" placeholder="CONFIRM PASSWORD" required />
+
+      <button type="submit">REGISTER</button>
+    </form>
+
+    <div class="info-section">
+      <div class="info-text">
+        Here you can buy directly from our local fisherman bringing the freshest catch from the sea to your table with just a few clicks. 
+        Join our community and support sustainable fishing today!
+      </div>
+      <div class="login-text">
+        Already have an account? <a href="login.html">Login Here</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    @AQUATRADE 2025. ALL RIGHTS RESERVED
+  </footer>
+</body>
+</html>
